@@ -1,8 +1,5 @@
-from polygon import RESTClient
-import datetime as dt
-import pandas as pd
-import plotly.graph_objects as go
-from plotly.offline import plot
+from importing_modules import *
+
 
 polygonAPIkey = "CMpQPwZecYoKyqM5Lt8ygrafXMhUgpSj"
 
