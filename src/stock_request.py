@@ -26,4 +26,5 @@ fig = go.Figure(data=[go.Candlestick(x=priceData.index,
                 low=priceData['low'],
                 close=priceData['close'])])
 
-plot(fig, auto_open=True)
+# plot(fig, auto_open=True)
+fig.write_html("C:/Users/bcanf/Documents/GitHub/SPSA/app/templates/plot.html")
