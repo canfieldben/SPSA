@@ -6,6 +6,8 @@ from plotly.offline import plot
 import os
 
 dir = os.getcwd()
+parDir = os.path.dirname(os.getcwd())
+
 polygonAPIkey = "CMpQPwZecYoKyqM5Lt8ygrafXMhUgpSj"
 client = RESTClient(polygonAPIkey)
 
@@ -32,5 +34,12 @@ def stock_request(stockTicker):
                     low=priceData['low'],
                     close=priceData['close'])])
 
-    # plot(fig, auto_open=True)
-    fig.write_html(f"{dir}/app/templates/plot.html")
+
+    try:
+        fig.write_html(f"{dir}/app/templates/plot.html")
+    except:
+        print("local test")
+        plot(fig, auto_open=True)
+        fig.write_html(f"{parDir}/app/templates/plot.html")
+
+stock_request("IBM")
