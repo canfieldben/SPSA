@@ -1,9 +1,11 @@
-<!doctype html>
-<html>
-    <head>
-        <title>{{ title }} - Microblog</title>
-    </head>
-    <body>
-        <h1>Hello!</h1>
-    </body>
-</html>
+{% block content %}
+    <h1>Stock Analysis</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.stock.label }}<br>
+            {{ form.stock(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
