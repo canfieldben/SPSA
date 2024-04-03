@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for
 from app.forms import StockForm
 from app import app
-from src import *
+from src import stock_request, reddit_requests
 
 
 @app.route('/', methods=['GET', 'POST'])
