@@ -1,5 +1,6 @@
 import praw
 
+
 def reddit_request(subreddit):
     reddit = praw.Reddit(
         client_id="O9_yMK7-hsTuw6ii39AwYw",
@@ -9,8 +10,7 @@ def reddit_request(subreddit):
         username="Confident-Use-7256",
     )
 
-    print(reddit.read_only) # prints auth level (if password is included it grants access to more info)
+    print(reddit.read_only)  # prints auth level (if password is included it grants access to more info)
 
     for submission in reddit.subreddit(subreddit).hot(limit=20):
-       print(submission.title)
-
+        print(submission.title)
