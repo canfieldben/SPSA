@@ -5,7 +5,7 @@ import praw
 import src.sentiment
 
 
-def reddit_request(subreddit):
+def reddit_request(keyword):
     post_list = []
     time_list = []
     post_dic = {}
@@ -20,7 +20,9 @@ def reddit_request(subreddit):
 
     print(reddit.read_only)  # prints auth level (if password is included it grants access to more info)
 
-    for submission in reddit.subreddit(subreddit).hot(limit=100):
+    all = reddit.subreddit("all")
+
+    for submission in all.search(keyword, limit=None, sort='hot', time_filter='month'):
         time = datetime.fromtimestamp(submission.created)
 
         post_dic[str(time)] = submission.title
@@ -29,6 +31,7 @@ def reddit_request(subreddit):
         time_list.append(time)
 
     new_d = OrderedDict(sorted(post_dic.items(), key=lambda x: parse(x[0])))
+    print(len(new_d))
     src.sentiment.sentiment(new_d)
 
 
