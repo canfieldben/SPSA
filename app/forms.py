@@ -5,5 +5,5 @@ from wtforms.validators import DataRequired
 
 class StockForm(FlaskForm):
     stock = StringField('Stock Code', validators=[DataRequired()])
-    company = StringField('Company Name', validators=[DataRequired()])
+    company = StringField('Company Name (as referred to in social media)', validators=[DataRequired()])
     submit = SubmitField('Run Analysis')

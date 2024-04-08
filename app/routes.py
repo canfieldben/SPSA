@@ -9,12 +9,12 @@ from src import stock_request, reddit_requests
 def index():
     form = StockForm()
     if form.validate_on_submit():
-        return redirect(url_for('display', id=form.stock.data))
+        return redirect(url_for('display', id=form.stock.data, company=form.company.data))
     return render_template('index.html', title='Stock Analysis', form=form)
 
 
-@app.route('/display/<id>', methods=['GET', 'POST'])
-def display(id):
+@app.route('/display/<id>/<company>', methods=['GET', 'POST'])
+def display(id, company):
     stock_request.stock_request(id)
-    reddit_requests.reddit_request(id)
+    reddit_requests.reddit_request(company)
     return render_template('plot.html')
