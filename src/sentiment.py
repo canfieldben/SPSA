@@ -19,7 +19,7 @@ def sentiment(post_dic):
 
     df = pd.DataFrame({'Date': posts, 'Score': scores})
     fig = px.line(df, x='Date', y='Score')
-    fig.show()
+    # fig.show()
 
     try:
         fig.write_html(f"{dir}/app/templates/sentiment.html")
