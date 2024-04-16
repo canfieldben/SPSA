@@ -11,8 +11,6 @@ parDir = os.path.dirname(os.getcwd())
 polygonAPIkey = "CMpQPwZecYoKyqM5Lt8ygrafXMhUgpSj"
 client = RESTClient(polygonAPIkey)
 
-# stockTicker = 'AAPL'
-
 
 def stock_request(stockTicker):
     today = dt.date.today()

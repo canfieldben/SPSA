@@ -26,13 +26,9 @@ def reddit_request(keyword):
         time = datetime.fromtimestamp(submission.created)
         post_dic[str(time)] = submission.title
 
-        #post_list.append(submission.title)
-        #time_list.append(time)
-
     new_d = OrderedDict(sorted(post_dic.items(), key=lambda x: parse(x[0])))
     print(len(new_d))
     print(new_d)
     src.sentiment.sentiment(new_d)
-
 
 # reddit_request('AAPL') # FOR TESTING PURPOSES ONLY. WILL NOT RUN WHEN USING FLASK APPLICATION

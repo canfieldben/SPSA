@@ -18,11 +18,13 @@ def sentiment(post_dic):
 
         temp = datetime.strptime(post, "%Y-%m-%d %H:%M:%S")
         temp = temp.strftime("%Y-%m-%d")
-        print(temp)
+        #print(type(temp))
         posts.append(temp)
 
     df = pd.DataFrame({'Date': posts, 'Score': scores})
+    #df = df.groupby(df['']).mean()
     print(df)
+
     fig = px.bar(df, x='Date', y='Score')
     # fig.show()
 
