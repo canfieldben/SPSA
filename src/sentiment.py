@@ -2,7 +2,7 @@ from textblob import TextBlob
 import pandas as pd
 import plotly.express as px
 import os
-
+from datetime import datetime
 
 dir = os.getcwd()
 parDir = os.path.dirname(os.getcwd())
@@ -15,10 +15,15 @@ def sentiment(post_dic):
     for post in post_dic.keys():
         blob = TextBlob(post_dic[post])
         scores.append(blob.sentiment.polarity)
-        posts.append(post)
+
+        temp = datetime.strptime(post, "%Y-%m-%d %H:%M:%S")
+        temp = temp.strftime("%Y-%m-%d")
+        print(temp)
+        posts.append(temp)
 
     df = pd.DataFrame({'Date': posts, 'Score': scores})
-    fig = px.line(df, x='Date', y='Score')
+    print(df)
+    fig = px.bar(df, x='Date', y='Score')
     # fig.show()
 
     try:

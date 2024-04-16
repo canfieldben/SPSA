@@ -11,14 +11,20 @@ parDir = os.path.dirname(os.getcwd())
 polygonAPIkey = "CMpQPwZecYoKyqM5Lt8ygrafXMhUgpSj"
 client = RESTClient(polygonAPIkey)
 
-stockTicker = 'AAPL'
+# stockTicker = 'AAPL'
 
 
 def stock_request(stockTicker):
+    today = dt.date.today()
+    last_month = today - dt.timedelta(days=31)
+    last_month = last_month.strftime("%Y-%m-%d")
+
+    one_year = '2023-04-23'
+
     dataRequest = client.get_aggs(ticker=stockTicker,
                                   multiplier=1,
                                   timespan='day',
-                                  from_='2022-09-01',
+                                  from_=last_month,
                                   to='2100-01-01')
 
     priceData = pd.DataFrame(dataRequest)

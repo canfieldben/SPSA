@@ -24,15 +24,15 @@ def reddit_request(keyword):
 
     for submission in all.search(keyword, limit=None, sort='hot', time_filter='month'):
         time = datetime.fromtimestamp(submission.created)
-
         post_dic[str(time)] = submission.title
 
-        post_list.append(submission.title)
-        time_list.append(time)
+        #post_list.append(submission.title)
+        #time_list.append(time)
 
     new_d = OrderedDict(sorted(post_dic.items(), key=lambda x: parse(x[0])))
     print(len(new_d))
+    print(new_d)
     src.sentiment.sentiment(new_d)
 
 
-# reddit_request('IBM') # FOR TESTING PURPOSES ONLY. WILL NOT RUN WHEN USING FLASK APPLICATION
+# reddit_request('AAPL') # FOR TESTING PURPOSES ONLY. WILL NOT RUN WHEN USING FLASK APPLICATION
