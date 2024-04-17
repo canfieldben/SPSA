@@ -28,7 +28,6 @@ def reddit_request(keyword):
 
     new_d = OrderedDict(sorted(post_dic.items(), key=lambda x: parse(x[0])))
     print(len(new_d))
-    print(new_d)
     src.sentiment.sentiment(new_d)
 
 # reddit_request('AAPL') # FOR TESTING PURPOSES ONLY. WILL NOT RUN WHEN USING FLASK APPLICATION

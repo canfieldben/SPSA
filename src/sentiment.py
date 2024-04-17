@@ -17,15 +17,13 @@ def sentiment(post_dic):
         scores.append(blob.sentiment.polarity)
 
         temp = datetime.strptime(post, "%Y-%m-%d %H:%M:%S")
-        temp = temp.strftime("%Y-%m-%d")
-        #print(type(temp))
         posts.append(temp)
 
     df = pd.DataFrame({'Date': posts, 'Score': scores})
-    #df = df.groupby(df['']).mean()
     print(df)
+    df = df.groupby(pd.Grouper(key='Date', axis=0, freq='D')).mean()
 
-    fig = px.bar(df, x='Date', y='Score')
+    fig = px.bar(df, y='Score')
     # fig.show()
 
     try:
