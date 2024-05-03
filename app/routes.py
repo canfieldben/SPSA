@@ -9,11 +9,12 @@ from src import stock_request, reddit_requests
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     form = StockForm()
+    # on submit, run stock API and reddit API with inputted data from forms (must not be empty)
     if form.validate_on_submit():
         stock_request.stock_request(form.stock.data)
         reddit_requests.reddit_request(form.company.data)
-        return redirect(url_for('display'))
-    return render_template('index.html', title='Stock Analysis', form=form)
+        return redirect(url_for('display')) # render html page
+    return render_template('index.html', title='Stock Analysis', form=form) # render html page
 
 
 # only used for IFRAME
